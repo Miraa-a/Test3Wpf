@@ -148,8 +148,8 @@ namespace WpfApp3
                 EmissiveColor = Colors.Red.ToColor4(),
             };
 
-            var build = new MeshBuilder(false, false);
-            Line = LineBuilder.
+            //var build = new MeshBuilder(false, false);
+            //Line = LineBuilder.
            // Box3Transform = new TranslateTransform3D(0, 0, 0);
 
         }
