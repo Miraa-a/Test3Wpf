@@ -18,24 +18,25 @@
             ShowViewCube="True"
             ShowCoordinateSystem="True"
             >
+            <hx:AmbientLight3D Color="Gray" />
+            <hx:DirectionalLight3D Direction="{Binding Camera.LookDirection}" Color="White" />
+
+
             <hx:LineGeometryModel3D
                 x:Name="grid"
                 Geometry="{Binding Grid}"
-                Transform="{Binding GridTransform}"
                 Color="{Binding GridColor}" />
 
-            <!--<hx:MeshGeometryModel3D
-                    Geometry="{Binding Box}"
-                    Material="{Binding BoxColorMaterial}"/>
-            
             <hx:MeshGeometryModel3D
-                    Geometry="{Binding Box2}"
-                    Material="{Binding Box2ColorMaterial}"
-                     Transform="{Binding Box2Transform}"/>-->
-            <hx:MeshGeometryModel3D
-                    Geometry="{Binding Box3}"
-                    Material="{Binding Box3ColorMaterial}"/>
-            
+                x:Name="model"
+                    Geometry="{Binding Model}"
+                    Material="{Binding ModelMaterial}"/>
+
+            <hx:LineGeometryModel3D
+                x:Name="edges"
+                Geometry="{Binding Edges}"
+                Color="{Binding EdgesColor}" />
+
         </hx:Viewport3DX>
 
     </Grid>
