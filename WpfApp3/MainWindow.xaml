@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfApp3"
         xmlns:hx="http://helix-toolkit.org/wpf/SharpDX"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="800" Width="1200">
     <Window.DataContext>
         <local:MainViewModel />
     </Window.DataContext>
@@ -25,7 +25,9 @@
             <hx:LineGeometryModel3D
                 x:Name="grid"
                 Geometry="{Binding Grid}"
-                Color="{Binding GridColor}" />
+                Color="{Binding GridColor}" 
+                Thickness="0.5"
+                />
 
             <hx:MeshGeometryModel3D
                 x:Name="model"
@@ -35,7 +37,9 @@
             <hx:LineGeometryModel3D
                 x:Name="edges"
                 Geometry="{Binding Edges}"
-                Color="{Binding EdgesColor}" />
+                Color="{Binding EdgesColor}"
+                Thickness="2"
+                />
 
         </hx:Viewport3DX>
 

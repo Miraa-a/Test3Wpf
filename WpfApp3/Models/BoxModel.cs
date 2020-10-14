@@ -15,13 +15,41 @@ namespace WpfApp3
             Indices.Clear();
             Normals.Clear();
 
-            AddCubeFace(Vector3.Zero, Vector3.UnitX, Vector3.UnitZ, Length, Width, Height);
-            AddCubeFace(Vector3.Zero, -Vector3.UnitX, Vector3.UnitZ, Length, Width, Height);
-            AddCubeFace(Vector3.Zero, -Vector3.UnitY, Vector3.UnitZ, Width, Length, Height);
-            AddCubeFace(Vector3.Zero, Vector3.UnitY, Vector3.UnitZ, Width, Length, Height);
-            AddCubeFace(Vector3.Zero, Vector3.UnitZ, Vector3.UnitY, Height, Length, Width);
-            AddCubeFace(Vector3.Zero, -Vector3.UnitZ, Vector3.UnitY, Height, Length, Width);
+            var c = new Vector3(Length, Width, Height) / 2;
+
+            AddCubeFace(c, Vector3.UnitX, Vector3.UnitZ, Length, Width, Height);
+            AddCubeFace(c, -Vector3.UnitX, Vector3.UnitZ, Length, Width, Height);
+            AddCubeFace(c, -Vector3.UnitY, Vector3.UnitZ, Width, Length, Height);
+            AddCubeFace(c, Vector3.UnitY, Vector3.UnitZ, Width, Length, Height);
+            AddCubeFace(c, Vector3.UnitZ, Vector3.UnitY, Height, Length, Width);
+            AddCubeFace(c, -Vector3.UnitZ, Vector3.UnitY, Height, Length, Width);
+
+            // add edges
+            AddEdge(0, 1);
+            AddEdge(1, 2);
+            AddEdge(2, 3);
+            AddEdge(3, 0);
+
+            AddEdge(4, 5);
+            AddEdge(5, 6);
+            AddEdge(6, 7);
+            AddEdge(7, 4);
+
+            AddEdge(0, 5);
+            AddEdge(1, 4);
+            AddEdge(2, 7);
+            AddEdge(3, 6);
         }
+
+
+        void AddEdge(int i0, int i1)
+        {
+            var edge = new Edge();
+            edge.Indices.Add(i0);
+            edge.Indices.Add(i1);
+            Edges.Add(edge);
+        }
+
 
 
         void AddCubeFace(Vector3 center, Vector3 normal, Vector3 up, float dist, float width, float height)
@@ -54,24 +82,31 @@ namespace WpfApp3
             Indices.Add(i0 + 0);
             Indices.Add(i0 + 3);
             Indices.Add(i0 + 2);
-            
+
             // add Face
-            // Face.Add (......
-            // нужно добавить код
+            var face = new Face();
+            face.Indices.Add(i0 + 2);
+            face.Indices.Add(i0 + 1);
+            face.Indices.Add(i0 + 0);
+            face.Indices.Add(i0 + 0);
+            face.Indices.Add(i0 + 3);
+            face.Indices.Add(i0 + 2);
+            Faces.Add(face);
 
             // add edges
-            // пока ребра от разных граней дублируются (нужно сделать чтобы не дублировались)
             var edge = new Edge();
-            edge.Indices.Add(i0 + 0);
-            edge.Indices.Add(i0 + 1);
-            edge.Indices.Add(i0 + 1);
-            edge.Indices.Add(i0 + 2);
-            edge.Indices.Add(i0 + 2);
-            edge.Indices.Add(i0 + 3);
-            edge.Indices.Add(i0 + 3);
-            edge.Indices.Add(i0 + 0);
-            Edges.Add(edge);
+            AddLine(edge, i0 + 0, i0 + 1);
+            AddLine(edge, i0 + 1, i0 + 2);
+            AddLine(edge, i0 + 2, i0 + 3);
+            AddLine(edge, i0 + 3, i0 + 0);
+            face.Edges.Add(edge);
+        }
 
+
+        static void AddLine(Edge edge, int i0, int i1)
+        {
+            edge.Indices.Add(i0);
+            edge.Indices.Add(i1);
         }
     }
 }
