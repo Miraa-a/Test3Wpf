@@ -32,6 +32,9 @@
                     Geometry="{Binding Box2}"
                     Material="{Binding Box2ColorMaterial}"
                      Transform="{Binding Box2Transform}"/>
+            <hx:MeshGeometryModel3D
+                    Geometry="{Binding Box3}"
+                    Material="{Binding Box3ColorMaterial}"/>
             
         </hx:Viewport3DX>
 
