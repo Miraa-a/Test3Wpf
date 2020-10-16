@@ -40,8 +40,8 @@ namespace WpfApp3
         public MainViewModel()
         {
             //ModelBase m = new BoxModel();
-            //ModelBase m = new CilinderModel();
-            ModelBase m = new SphereModel();
+           ModelBase m = new СylinderModel();
+           // ModelBase m = new SphereModel();
 
             m.Update();
 
