@@ -9,6 +9,7 @@ using Camera = HelixToolkit.Wpf.SharpDX.Camera;
 using Color = System.Windows.Media.Color;
 using PerspectiveCamera = HelixToolkit.Wpf.SharpDX.PerspectiveCamera;
 using MeshGeometry3D = HelixToolkit.SharpDX.Core.MeshGeometry3D;
+using WpfApp3.Models;
 
 namespace WpfApp3
 {
@@ -38,9 +39,9 @@ namespace WpfApp3
 
         public MainViewModel()
         {
-            ModelBase m = new BoxModel();
+            //ModelBase m = new BoxModel();
             //ModelBase m = new CilinderModel();
-            //ModelBase m = new SphereModel();
+            ModelBase m = new SphereModel();
 
             m.Update();
 
